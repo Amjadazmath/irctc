@@ -5,15 +5,15 @@
           PATH="/opt/maven/bin:$PATH"
      }
      stages {
-       stage ("git clone") {
+       stage ('git clone') {
          steps {
-           git url: "https://github.com/Amjadazmath/irctc.git", "branch: main"
+           git url: 'https://github.com/Amjadazmath/irctc.git', branch: 'main'
 
 
          }
        }
       
-        stage ("build") { 
+        stage ('build') { 
           steps {
             sh 'mvn clean install'
 
