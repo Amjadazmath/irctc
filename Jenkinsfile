@@ -7,21 +7,22 @@
      stages {
         stage('build') { 
           steps {
-            sh 'mvn clean install'
+            sh 'mvn clean deploy'
 
           }
         }  
-        stage('SonarQube analysis') {
-          envirnoment {
-            scannerhome= tool "sonarqube-server-scanner"
-          }
-          steps {
-            with SonarQubeEnv ("sonarqube-server") {
-              sh "${scannerhome}/bin/sonar-scanner"
 
-            }
-          }
-        }  
+         stage('SonarQube analysis') {
+           envirnoment {
+            scannerHome = tool 'sonarqube-server-scanner'
+           }
+           steps {
+             with SonarQubeEnv ('sonarqube-server') {
+               sh "${scannerhome}/bin/sonar-scanner"
+
+             }  
+           }
+         }  
 
      }
  }
